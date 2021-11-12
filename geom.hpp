@@ -36,15 +36,15 @@ struct Line {
     Line(const Point& p1, const Point& p2) {
         B = -1;
         if(p1.x - p2.x == 0) {
-            cout << "Division by 0!" << endl;
-        } else{
-            A = (p1.y - p2.y) / (p1.x - p2.x); 
-            C = p1.y - A * p1.x;
+            return;
         }
+
+        A = (p1.y - p2.y) / (p1.x - p2.x); 
+        C = p1.y - A * p1.x;
     }
 
     bool parallel(const Line& other) const {
-        return eq(this->A * other.B, this->B * other.A); 
+        return eq(this->A * other.B, this->B * other.A) && this->C!=other.C; 
     }
 
     Line parallel(const Point& p) {
