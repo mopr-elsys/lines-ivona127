@@ -40,6 +40,11 @@ struct Line {
         }
 
         A = (p1.y - p2.y) / (p1.x - p2.x); 
+        
+        if (p1.y == A * p1.x){
+            return;
+        }
+        
         C = p1.y - A * p1.x;
     }
 
